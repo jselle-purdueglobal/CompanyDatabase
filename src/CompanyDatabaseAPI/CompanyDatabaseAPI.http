@@ -1,0 +1,6 @@
+@CompanyDatabaseAPI_HostAddress = http://localhost:5128
+
+GET {{CompanyDatabaseAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
