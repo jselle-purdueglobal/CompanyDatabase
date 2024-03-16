@@ -3,18 +3,53 @@
         xmlns:vm="using:CompanyDatabaseUI.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
+        Width="1200" Height="800"
         x:Class="CompanyDatabaseUI.Views.DashboardView"
         x:DataType="vm:DashboardViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="CompanyDatabaseUI">
 
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:DashboardViewModel/>
-    </Design.DataContext>
-
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <StackPanel>
+        
+        <!-- Header -->
+        <Grid Height="150">
+            <TextBlock FontWeight="Bold"
+                       FontSize="65"
+                       TextDecorations="Underline"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center">
+                Company Database
+            </TextBlock>
+        </Grid>
+        
+        <!-- Data View-->
+        <Grid Height="650">
+            <StackPanel>
+                
+                <TextBlock Text="{Binding CustomerCount}"
+                           Margin="20,5"
+                           FontSize="50"
+                           FontWeight="Bold"/>
+                
+                <DataGrid ItemsSource="{Binding CustomerList}"
+                          Margin="20,5"
+                          IsReadOnly="True"
+                          Height="500"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"
+                          ColumnWidth="*"
+                          GridLinesVisibility="All"
+                          BorderThickness="1"
+                          BorderBrush="Gray">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name"
+                                            Binding="{Binding Name}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                
+            </StackPanel>
+        </Grid>
+    </StackPanel>
 
 </Window>

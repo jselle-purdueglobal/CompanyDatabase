@@ -8,6 +8,6 @@ public class CustomerProfile : Profile
 {
     public CustomerProfile()
     {
-        CreateMap<Customer, CustomerListDto>();
+        CreateMap<Customer, CustomerNameDto>();
     }
 }

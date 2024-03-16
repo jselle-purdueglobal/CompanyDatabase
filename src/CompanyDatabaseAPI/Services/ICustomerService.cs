@@ -5,5 +5,5 @@ namespace CompanyDatabaseAPI.Services;
 public interface ICustomerService
 {
     Task<int> GetCustomerCountAsync();
-    Task<IEnumerable<CustomerListDto>> GetCustomerListAsync();
+    Task<IEnumerable<CustomerNameDto>> GetCustomersAsync();
 }

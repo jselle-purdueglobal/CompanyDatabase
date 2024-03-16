@@ -12,9 +12,9 @@ public class CustomerService(ICustomerRepository repository, IMapper mapper) : I
         return await repository.GetCustomerCountAsync();
     }
 
-    public async Task<IEnumerable<CustomerListDto>> GetCustomerListAsync()
+    public async Task<IEnumerable<CustomerNameDto>> GetCustomersAsync()
     {
         var customers = await repository.GetCustomersAsync();
-        return mapper.Map<IEnumerable<CustomerListDto>>(customers);
+        return mapper.Map<IEnumerable<CustomerNameDto>>(customers);
     }
 }

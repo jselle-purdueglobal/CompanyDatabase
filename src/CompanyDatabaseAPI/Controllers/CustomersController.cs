@@ -16,10 +16,10 @@ namespace CompanyDatabaseAPI.Controllers
             return Ok(count);
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<CustomerListDto>>> GetAllCustomers()
+        [HttpGet("names")]
+        public async Task<ActionResult<IEnumerable<CustomerNameDto>>> GetCustomers()
         {
-            var customers = await service.GetCustomerListAsync();
+            var customers = await service.GetCustomersAsync();
             return Ok(customers);
         }
     }

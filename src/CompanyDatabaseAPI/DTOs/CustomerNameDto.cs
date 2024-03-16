@@ -1,6 +1,6 @@
 namespace CompanyDatabaseAPI.DTOs;
 
-public class CustomerListDto
+public class CustomerNameDto
 {
     public string CompanyName { get; init; } = null!;
 }
