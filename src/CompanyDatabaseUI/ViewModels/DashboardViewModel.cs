@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using CompanyDatabaseUI.Models;
 using CompanyDatabaseUI.Services;
 using ReactiveUI;
