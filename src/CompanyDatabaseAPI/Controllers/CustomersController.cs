@@ -1,31 +1,25 @@
 using Microsoft.AspNetCore.Mvc;
 using CompanyDatabaseAPI.DTOs;
 using CompanyDatabaseAPI.Repositories;
+using CompanyDatabaseAPI.Services;
 
 namespace CompanyDatabaseAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomersController : ControllerBase
+    public class CustomersController(ICustomerService service) : ControllerBase
     {
-        private readonly ICustomerRepository _repository;
-
-        public CustomersController(ICustomerRepository repository)
-        {
-            _repository = repository;
-        }
-
         [HttpGet("count")]
         public async Task<ActionResult<int>> GetCustomerCount()
         {
-            var count = await _repository.GetCustomerCount();
+            var count = await service.GetCustomerCountAsync();
             return Ok(count);
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CustomerDto>>> GetAllCustomers()
+        public async Task<ActionResult<IEnumerable<CustomerListDto>>> GetAllCustomers()
         {
-            var customers = await _repository.GetCustomersAsync();
+            var customers = await service.GetCustomerListAsync();
             return Ok(customers);
         }
     }

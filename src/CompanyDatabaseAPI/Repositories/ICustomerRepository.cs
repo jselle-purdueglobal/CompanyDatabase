@@ -1,9 +1,10 @@
 using CompanyDatabaseAPI.DTOs;
+using CompanyDatabaseAPI.Models;
 
 namespace CompanyDatabaseAPI.Repositories;
 
 public interface ICustomerRepository
 {
-    Task<IEnumerable<CustomerDto>> GetCustomersAsync();
-    Task<int> GetCustomerCount();
+    Task<int> GetCustomerCountAsync();
+    Task<IEnumerable<Customer>> GetCustomersAsync();
 }
