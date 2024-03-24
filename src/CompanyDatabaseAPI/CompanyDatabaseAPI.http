@@ -1,6 +1,11 @@
-@CompanyDatabaseAPI_HostAddress = http://localhost:5128
+@CompanyDatabaseAPI_HostAddress = http://localhost:5173
 
-GET {{CompanyDatabaseAPI_HostAddress}}/weatherforecast/
+GET {{CompanyDatabaseAPI_HostAddress}}/api/Customers/count
+Accept: application/json
+
+###
+
+GET {{CompanyDatabaseAPI_HostAddress}}/api/Customers/names
 Accept: application/json
 
 ###

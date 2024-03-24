@@ -1,6 +1,7 @@
+using System;
+using System.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using CompanyDatabaseAPI.DTOs;
-using CompanyDatabaseAPI.Repositories;
 using CompanyDatabaseAPI.Services;
 
 namespace CompanyDatabaseAPI.Controllers

@@ -29,4 +29,11 @@
         <PackageReference Include="Semi.Avalonia" Version="11.0.7.1" />
         <PackageReference Include="Semi.Avalonia.DataGrid" Version="11.0.7.1" />
     </ItemGroup>
+
+
+    <ItemGroup>
+      <Reference Include="Microsoft.Data.SqlClient">
+        <HintPath>..\..\..\..\.nuget\packages\microsoft.data.sqlclient\5.1.5\ref\net6.0\Microsoft.Data.SqlClient.dll</HintPath>
+      </Reference>
+    </ItemGroup>
 </Project>

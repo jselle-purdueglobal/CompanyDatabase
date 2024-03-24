@@ -25,7 +25,7 @@ public partial class App : Application
         var vm = services.GetRequiredService<AppShellViewModel>();
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = new AppShell()
+            desktop.MainWindow = new AppShell
             {
                 DataContext = vm
             };

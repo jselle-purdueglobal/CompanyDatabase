@@ -1,10 +1,100 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="using:CompanyDatabaseUI.ViewModels"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:LoginViewModel"
+             mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
+             Width="1200" Height="800"
              x:Class="CompanyDatabaseUI.Views.LoginView">
-    <Button Content="Login"
-            x:CompileBindings="False"
-            Command="{Binding $parent[Window].DataContext.Login}"></Button>
+    
+    <!--DataContext-->
+    <Design.DataContext>
+        <vm:LoginViewModel/>
+    </Design.DataContext>
+    <Panel>
+        
+        <!--Login Form-->
+        <Border HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                BorderThickness="4"
+                CornerRadius="20"
+                BorderBrush="CornflowerBlue">
+            <StackPanel>
+                
+                <!--Header-->
+                <Border HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Height="50"
+                        CornerRadius="20"
+                        Background="SkyBlue"
+                        Margin="20">
+                    <TextBlock Text="Company Data"
+                               VerticalAlignment="Center"
+                               FontSize="26"
+                               FontWeight="Bold"
+                               Margin="12"/>
+                </Border>
+                
+                <!--Server & Database-->
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox ItemsSource="{Binding Servers}"
+                              Width="165"
+                              Height="45"
+                              Margin="20"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              PlaceholderText="Select Server"
+                              FontSize="15"
+                              CornerRadius="12"
+                              FontWeight="Bold"
+                              SelectedItem="{Binding Server, Mode=TwoWay}"/>
+                    <ComboBox ItemsSource="{Binding Databases}"
+                              Width="165"
+                              Height="45"
+                              Margin="20"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              PlaceholderText="Select Database"
+                              FontSize="15"
+                              FontWeight="Bold"
+                              CornerRadius="12"
+                              SelectedItem="{Binding Database, Mode=TwoWay}"/>
+                </StackPanel>
+                
+                <!--Username & Password-->
+                <TextBox Margin="20"
+                         Height="45"
+                         CornerRadius="12"
+                         Watermark="Username"
+                         Padding="12"
+                         Text="{Binding Username, Mode=TwoWay}"/>
+                <MaskedTextBox Margin="20"
+                               Height="45"
+                               CornerRadius="12"
+                               Padding="12"
+                               Watermark="Password"
+                               Text="{Binding Password, Mode=TwoWay}"/>
+                
+                <!--Login Button-->
+                <Button Content="Login"
+                        Command="{Binding LoginCommand}"
+                        Margin="20"
+                        Height="45"
+                        CornerRadius="12"/>    
+            </StackPanel>
+        </Border>
+        
+        <!--Progress Bar-->
+        <Panel Background="{DynamicResource ThemeAccentBrush2}"
+               Opacity="0.5"
+               IsVisible="{Binding IsBusy}"
+               ZIndex="9999">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ProgressBar IsIndeterminate="True"
+                             Width="50"
+                             Height="50"/>
+            </StackPanel>
+        </Panel>
+    </Panel>
 </UserControl>

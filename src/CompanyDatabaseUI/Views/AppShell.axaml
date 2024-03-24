@@ -8,5 +8,6 @@
         x:DataType="vm:AppShellViewModel"
         x:Class="CompanyDatabaseUI.Views.AppShell"
         Title="AppShell"
+        Icon="/Assets/avalonia-logo.ico"
         Content="{Binding ContentViewModel}">
 </Window>

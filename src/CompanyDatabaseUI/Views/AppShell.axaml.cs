@@ -7,5 +7,6 @@ public partial class AppShell : Window
     public AppShell()
     {
         InitializeComponent();
+        this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
     }
 }

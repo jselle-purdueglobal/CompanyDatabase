@@ -14,14 +14,17 @@ public class AppShellViewModel : ViewModelBase
         private set => this.RaiseAndSetIfChanged(ref _contentViewModel, value);
     }
 
-    public AppShellViewModel(IServiceProvider serviceProvider, LoginViewModel loginViewModel)
+    public AppShellViewModel(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
-        ContentViewModel = loginViewModel;
+        LoginViewModel = _serviceProvider.GetService<LoginViewModel>()!;
+        _contentViewModel = LoginViewModel;
+        IsBusy = false;
     }
-    
-    public void Login()
+
+    private ViewModelBase LoginViewModel { get; }
+    public void NavigateDashboard()
     {
-        ContentViewModel = _serviceProvider.GetService<DashboardViewModel>();
+        ContentViewModel = _serviceProvider.GetService<DashboardViewModel>()!;
     }
 }
