@@ -23,14 +23,15 @@
             <StackPanel>
                 
                 <!--Header-->
-                <Border HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                <Border HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
                         Height="50"
-                        CornerRadius="20"
+                        CornerRadius="16,16,0,0"
                         Background="SkyBlue"
-                        Margin="20">
+                        Margin="0">
                     <TextBlock Text="Company Data"
                                VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
                                FontSize="26"
                                FontWeight="Bold"
                                Margin="12"/>
@@ -41,7 +42,7 @@
                     <ComboBox ItemsSource="{Binding Servers}"
                               Width="165"
                               Height="45"
-                              Margin="20"
+                              Margin="15"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               PlaceholderText="Select Server"
@@ -52,7 +53,7 @@
                     <ComboBox ItemsSource="{Binding Databases}"
                               Width="165"
                               Height="45"
-                              Margin="20"
+                              Margin="15"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               PlaceholderText="Select Database"
@@ -63,14 +64,15 @@
                 </StackPanel>
                 
                 <!--Username & Password-->
-                <TextBox Margin="20"
+                <TextBox Margin="15"
                          Height="45"
                          CornerRadius="12"
                          Watermark="Username"
                          Padding="12"
                          Text="{Binding Username, Mode=TwoWay}"/>
-                <MaskedTextBox Margin="20"
+                <MaskedTextBox Margin="15"
                                Height="45"
+                               PasswordChar="*"
                                CornerRadius="12"
                                Padding="12"
                                Watermark="Password"
@@ -79,11 +81,17 @@
                 <!--Login Button-->
                 <Button Content="Login"
                         Command="{Binding LoginCommand}"
-                        Margin="20"
+                        Margin="15"
                         Height="45"
                         CornerRadius="12"/>
                 <!--Status Message-->
-                <TextBlock Text="{Binding}"/>
+                <TextBlock Text="{Binding StatusMessage}"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Foreground="Red"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           Height="30"/>
             </StackPanel>
         </Border>
         
