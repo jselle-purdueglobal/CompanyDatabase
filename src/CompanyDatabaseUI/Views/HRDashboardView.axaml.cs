@@ -6,9 +6,9 @@ using CompanyDatabaseUI.ViewModels;
 
 namespace CompanyDatabaseUI.Views;
 
-public partial class LoginView : ReactiveUserControl<LoginViewModel>
+public partial class HRDashboardView : ReactiveUserControl<HRDashboardViewModel>
 {
-    public LoginView()
+    public HRDashboardView()
     {
         InitializeComponent();
     }

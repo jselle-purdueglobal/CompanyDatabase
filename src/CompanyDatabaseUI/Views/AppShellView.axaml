@@ -1,0 +1,22 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:rxui="http://reactiveui.net"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:app="clr-namespace:CompanyDatabaseUI"
+        xmlns:vm="clr-namespace:CompanyDatabaseUI.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
+        Width="1200" Height="800"
+        x:DataType="vm:AppShellViewModel"
+        x:Class="CompanyDatabaseUI.Views.AppShellView"
+        Title="AppShellView"
+        Icon="/Assets/avalonia-logo.ico">
+        <rxui:RoutedViewHost Router="{Binding Router}">
+                <rxui:RoutedViewHost.DefaultContent>
+                        <TextBlock Text="Loading..." />
+                </rxui:RoutedViewHost.DefaultContent>
+                <rxui:RoutedViewHost.ViewLocator>
+                        <app:AppViewLocator />
+                </rxui:RoutedViewHost.ViewLocator>
+        </rxui:RoutedViewHost>
+</Window>

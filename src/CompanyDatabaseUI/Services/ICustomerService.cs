@@ -4,7 +4,7 @@ using CompanyDatabaseUI.Models;
 
 namespace CompanyDatabaseUI.Services;
 
-public interface ICustomerApiService
+public interface ICustomerService
 {
     Task<List<Customer>> GetCustomerListAsync();
     Task<int> GetCustomerCountAsync();

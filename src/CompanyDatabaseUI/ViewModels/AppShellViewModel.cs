@@ -1,30 +1,19 @@
 using System;
+using CompanyDatabaseUI.Factories;
+using CompanyDatabaseUI.Views;
 using Microsoft.Extensions.DependencyInjection;
 using ReactiveUI;
+using Splat;
 
 namespace CompanyDatabaseUI.ViewModels;
 
-public class AppShellViewModel : ViewModelBase
+public class AppShellViewModel : ViewModelBase, IScreen
 {
-    private readonly IServiceProvider _serviceProvider;
-    private ViewModelBase _contentViewModel = null!;
-    public ViewModelBase ContentViewModel
-    {
-        get => _contentViewModel;
-        private set => this.RaiseAndSetIfChanged(ref _contentViewModel, value);
-    }
-
+    public RoutingState Router { get; }
     public AppShellViewModel(IServiceProvider serviceProvider)
     {
-        _serviceProvider = serviceProvider;
-        LoginViewModel = _serviceProvider.GetService<LoginViewModel>()!;
-        _contentViewModel = LoginViewModel;
-        IsBusy = false;
-    }
-
-    private ViewModelBase LoginViewModel { get; }
-    public void NavigateDashboard()
-    {
-        ContentViewModel = _serviceProvider.GetService<DashboardViewModel>()!;
+        Router = new RoutingState();
+        var factory = serviceProvider.GetRequiredService<ILoginViewModelFactory>();
+        Router.Navigate.Execute(factory.Create(this));
     }
 }

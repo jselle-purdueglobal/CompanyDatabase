@@ -8,13 +8,13 @@ using CompanyDatabaseUI.Models;
 
 namespace CompanyDatabaseUI.Services;
 
-public class CustomerApiService(HttpClient httpClient) : ICustomerApiService
+public class CustomerService(HttpClient httpClient) : ICustomerService
 {
     private const string BaseUrl = "http://localhost:5173/api/customers";
     
     public async Task<List<Customer>> GetCustomerListAsync()
     {
-        var response = await httpClient.GetAsync($"{BaseUrl}/names");
+        var response = await httpClient.GetAsync(BaseUrl);
         response.EnsureSuccessStatusCode();
         var content = await response.Content.ReadAsStringAsync();
         var customers = JsonSerializer.Deserialize<List<Customer>>(content);

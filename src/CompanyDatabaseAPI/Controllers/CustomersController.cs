@@ -17,8 +17,8 @@ namespace CompanyDatabaseAPI.Controllers
             return Ok(count);
         }
 
-        [HttpGet("names")]
-        public async Task<ActionResult<IEnumerable<CustomerNameDto>>> GetCustomers()
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<CustomerDTO>>> GetCustomers()
         {
             var customers = await service.GetCustomersAsync();
             return Ok(customers);

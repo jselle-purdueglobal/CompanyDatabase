@@ -1,3 +1,4 @@
+using System;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
@@ -5,6 +6,7 @@ using CompanyDatabaseUI.Extensions;
 using CompanyDatabaseUI.ViewModels;
 using CompanyDatabaseUI.Views;
 using Microsoft.Extensions.DependencyInjection;
+using ReactiveUI;
 
 namespace CompanyDatabaseUI;
 
@@ -22,10 +24,10 @@ public partial class App : Application
 
         var services = collection.BuildServiceProvider();
 
-        var vm = services.GetRequiredService<AppShellViewModel>();
+        var vm = services.GetRequiredService<IScreen>();
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = new AppShell
+            desktop.MainWindow = new AppShellView
             {
                 DataContext = vm
             };

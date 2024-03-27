@@ -29,9 +29,9 @@ public class DashboardViewModel : ViewModelBase
     }
     public string CustomerCount => $"Customers: {Count}";
     
-    private readonly ICustomerApiService _customerService;
+    private readonly ICustomerService _customerService;
 
-    public DashboardViewModel(ICustomerApiService customerService)
+    public DashboardViewModel(ICustomerService customerService)
     {
         _customerService = customerService;
         RxApp.MainThreadScheduler.Schedule(LoadCustomerList);

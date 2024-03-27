@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CompanyDatabaseAPI.Repositories;
 
-public class CustomerRepository(NorthwindContext context, IMapper mapper) : ICustomerRepository
+public class CustomerRepository(NorthwindContext context) : ICustomerRepository
 {
     public async Task<int> GetCustomerCountAsync()
     {

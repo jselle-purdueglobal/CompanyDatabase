@@ -4,10 +4,10 @@ using CompanyDatabaseAPI.Models;
 
 namespace CompanyDatabaseAPI.Profiles;
 
-public class CustomerProfile : Profile
+public class RolePermissionProfile : Profile
 {
-    public CustomerProfile()
+    public RolePermissionProfile()
     {
-        CreateMap<Customer, CustomerDTO>();
+        CreateMap<RolePermission, RolePermissionDTO>();
     }
 }
