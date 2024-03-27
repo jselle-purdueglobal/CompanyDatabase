@@ -9,7 +9,7 @@
         Width="1200" Height="800"
         x:DataType="vm:AppShellViewModel"
         x:Class="CompanyDatabaseUI.Views.AppShellView"
-        Title="AppShellView"
+        Title="Super Secret Database"
         Icon="/Assets/avalonia-logo.ico">
         <rxui:RoutedViewHost Router="{Binding Router}">
                 <rxui:RoutedViewHost.DefaultContent>

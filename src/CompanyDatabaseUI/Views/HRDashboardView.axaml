@@ -3,6 +3,49 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:CompanyDatabaseUI.ViewModels"
+             x:DataType="vm:HRDashboardViewModel"
              x:Class="CompanyDatabaseUI.Views.HRDashboardView">
-    HR
+    <ScrollViewer>
+        <StackPanel Margin="50,10">
+            <!--Header-->
+            <Border HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    BorderThickness="4"
+                    CornerRadius="20"
+                    BorderBrush="CornflowerBlue">
+                <TextBlock Text="HR Dashboard"
+                           Margin="20,5"
+                           FontSize="50"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+            </Border>
+            <!--Employee Table-->
+            <TextBlock Text="{Binding EmployeeTotal}"
+                       Margin="20,5"
+                       FontSize="50"
+                       FontWeight="Bold"/>
+                    
+            <DataGrid ItemsSource="{Binding EmployeeList}"
+                      Margin="20,5"
+                      IsReadOnly="True"
+                      Height="500"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Center"
+                      ColumnWidth="*"
+                      GridLinesVisibility="All"
+                      BorderThickness="1"
+                      BorderBrush="Gray">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name"
+                                        Binding="{Binding FirstName}"/>
+                    <DataGridTextColumn Header="City"
+                                        Binding="{Binding LastName}"/>
+                    <DataGridTextColumn Header="Country"
+                                        Binding="{Binding Title}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

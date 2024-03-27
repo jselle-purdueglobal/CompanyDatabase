@@ -53,10 +53,10 @@ public class CEODashboardViewModel : ViewModelBase, IRoutableViewModel
     }
     public int EmployeeCount
     {
-        get => _orderCount;
+        get => _employeeCount;
         set
         {
-            this.RaiseAndSetIfChanged(ref _orderCount, value);
+            this.RaiseAndSetIfChanged(ref _employeeCount, value);
             this.RaisePropertyChanged(nameof(EmployeeTotal));
         }
     }
@@ -65,10 +65,13 @@ public class CEODashboardViewModel : ViewModelBase, IRoutableViewModel
     public string EmployeeTotal => $"Employees: {EmployeeCount}";
     
     private readonly ICustomerService _customerService;
-
-    public CEODashboardViewModel(IScreen hostScreen, ICustomerService customerService)
+    private readonly IOrderService _orderService;
+    private readonly IEmployeeService _employeeService;
+    public CEODashboardViewModel(IScreen hostScreen, ICustomerService customerService, IOrderService orderService, IEmployeeService employeeService)
     {
         _customerService = customerService;
+        _orderService = orderService;
+        _employeeService = employeeService;
         UrlPathSegment = "CEO";
         HostScreen = hostScreen;
     }
@@ -77,5 +80,11 @@ public class CEODashboardViewModel : ViewModelBase, IRoutableViewModel
         var customerList = await _customerService.GetCustomerListAsync();
         CustomerList = new ObservableCollection<Customer>(customerList);
         CustomerCount = await _customerService.GetCustomerCountAsync();
+        var orderList = await _orderService.GetOrderListAsync();
+        OrderList = new ObservableCollection<Order>(orderList);
+        OrderCount = await _orderService.GetOrderCountAsync();
+        var employeeList = await _employeeService.GetEmployeeListAsync();
+        EmployeeList = new ObservableCollection<Employee>(employeeList);
+        EmployeeCount = await _employeeService.GetEmployeeCountAsync();
     }
 }

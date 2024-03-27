@@ -4,10 +4,10 @@ namespace CompanyDatabaseUI.Models;
 
 public class Order
 {
-    [JsonPropertyName("OrderID")]
+    [JsonPropertyName("orderID")]
     public int OrderId { get; set; }
-    [JsonPropertyName("EmployeeID")]
+    [JsonPropertyName("employeeID")]
     public int EmployeeId { get; set; }
-    [JsonPropertyName("CustomerID")]
-    public int CustomerId { get; set; }
+    [JsonPropertyName("customerID")]
+    public string CustomerId { get; set; }
 }
